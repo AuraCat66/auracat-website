@@ -7,7 +7,9 @@ export function WebsiteHeader(props: JSX.HTMLAttributes<HTMLElement>) {
       class="flex flex-col"
     >
       <div class="pink-bg text-center">
-        <h1>AuraCat</h1>
+        <h1>
+          <a href="./">AuraCat</a>
+        </h1>
       </div>
       <div class="flex flex-row blue-bg justify-evenly">
         <p>

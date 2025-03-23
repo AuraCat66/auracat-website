@@ -39,6 +39,13 @@ main {
   margin: 0 5vw;
 }
 
+a {
+  text-decoration-line: none;
+}
+a:hover {
+  text-decoration-line: underline;
+}
+
 .pink-bg {
   background-color: var(--cherry-blossom-pink);
 }
