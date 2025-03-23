@@ -1,5 +1,12 @@
+* {
+  --vivid-sky-blue: #5bcefaff;
+  --powder-blue: #a8bcd9ff;
+  --cherry-blossom-pink: #f5a9b8ff;
+  --mimi-pink: #fad4dcff;
+  --white: #ffffffff;
+}
+
 html {
-  background-color: palevioletred;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   font-family:
@@ -19,6 +26,49 @@ html {
     "Noto Color Emoji";
 }
 
+body {
+  margin: 0;
+  background-color: var(--white);
+}
+
+.pink-bg {
+  background-color: var(--cherry-blossom-pink);
+}
+
+.blue-bg {
+  background-color: var(--vivid-sky-blue);
+}
+
+.line-h-normal {
+  line-height: normal;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.justify-center {
+  justify-content: space-evenly;
+}
+
+.flex {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.w-6rem {
+  width: 6rem;
 }

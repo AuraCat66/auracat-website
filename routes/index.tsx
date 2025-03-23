@@ -1,8 +1,10 @@
+import { WebsiteHeader } from "../components/WebsiteHeader.tsx";
+
 export default function Home() {
   return (
     <>
-      <h1 class="text-center">Welcome on my page</h1>
-      <h3 class="text-center">Work In Progress</h3>
+      <WebsiteHeader></WebsiteHeader>
+      <h2 class="text-center" style="color: red;">Work In Progress</h2>
     </>
   );
 }
