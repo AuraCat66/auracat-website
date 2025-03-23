@@ -6,12 +6,14 @@ export function WebsiteHeader(props: JSX.HTMLAttributes<HTMLElement>) {
       {...props}
       class="flex flex-col"
     >
-      <div class="pink-bg line-h-1rem text-center">
-        <h1>Welcome to my page</h1>
+      <div class="pink-bg text-center">
+        <h1>AuraCat</h1>
       </div>
       <div class="flex flex-row blue-bg justify-evenly">
-        <p>About me</p>
-        <p>My projects</p>
+        <p>
+          <a href="./about_me">About me</a>
+        </p>
+        <p>Portfolio</p>
         <p>Blog</p>
         <p>Contact</p>
         <p>
