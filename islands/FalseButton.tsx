@@ -21,13 +21,13 @@ export default function FalseButton(
       }}
       onMouseEnter={props.hoverColor
         ? (e) => {
-          (e.target as HTMLAnchorElement).style.backgroundColor = props
+          (e.target as HTMLDivElement).style.backgroundColor = props
             .hoverColor!;
         }
         : undefined}
       onMouseLeave={props.initialColor
         ? (e) => {
-          (e.target as HTMLAnchorElement).style.backgroundColor = props
+          (e.target as HTMLDivElement).style.backgroundColor = props
             .initialColor!;
         }
         : undefined}
