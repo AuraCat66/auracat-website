@@ -90,15 +90,15 @@ header > .flex > * {
 /* A simulated button */
 /* This code is attrocious, I'm sorry for your eyes (and for my own eyes) */
 .false-button {
+  display: inline-flex;
   text-align: center;
-  width: 7em;
-  min-height: 2.5em;
-  background: var(--sky-blue);
+  /* Seems to be broken now for some reason? */
   border-radius: 5px;
+  width: 6em;
+  min-height: 2em;
+  /* This is now mostly obselete because we now set the value directly in the FalseButton component */
+  background: var(--sky-blue);
   transition: background-color 0.05s ease-in-out;
-}
-.false-button:hover {
-  background: var(--mimi-pink);
 }
 .false-button > * {
   /* 
