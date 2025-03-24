@@ -1,4 +1,5 @@
 import { JSX } from "preact";
+import FalseButton from "../islands/FalseButton.tsx";
 
 export function WebsiteHeader(props: JSX.HTMLAttributes<HTMLElement>) {
   return (
@@ -11,16 +12,11 @@ export function WebsiteHeader(props: JSX.HTMLAttributes<HTMLElement>) {
           <a href="./">AuraCat</a>
         </h1>
       </div>
-      <div class="flex flex-row blue-bg justify-evenly">
-        <p>
-          <a href="./about_me">About me</a>
-        </p>
-        <p>Portfolio</p>
-        <p>Blog</p>
-        <p>Contact</p>
-        <p>
-          Anonymous<br />messages
-        </p>
+      <div class="flex flex-row blue-bg text-center justify-evenly">
+        <FalseButton href="./about_me">About me</FalseButton>
+        <FalseButton href="./portfolio">Portfolio</FalseButton>
+        <FalseButton href="./blog">Blog</FalseButton>
+        <FalseButton href="./contact">Contact</FalseButton>
       </div>
     </header>
   );
