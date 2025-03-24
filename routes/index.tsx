@@ -10,7 +10,7 @@ export default function Home() {
           You can read more about me <a href="./about_me">here.</a>
         </h3>
         <h3>
-          Look at my projects <a href="./portfolio">here</a>
+          You can also look at my projects <a href="./portfolio">here</a>
         </h3>
       </WebsiteBody>
     </>

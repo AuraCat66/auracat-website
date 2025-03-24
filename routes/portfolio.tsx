@@ -1,12 +1,12 @@
 import WebsiteBody from "../components/WebsiteBody.tsx";
 
-export default function Contact() {
+export default function Portfolio() {
   return (
     <>
       <WebsiteBody class="text-center">
         <h3>
-          Not sure how I'm gonna implement it, but this is gonna be some sort of
-          contact page eventually
+          I guess this is gonna be where I show my projects, as a sort of
+          portfolio
         </h3>
       </WebsiteBody>
     </>
