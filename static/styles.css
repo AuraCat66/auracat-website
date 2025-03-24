@@ -116,6 +116,9 @@ header .flex > * {
   justify-content: center;
 
   /* We override and remove any text decoration and properties */
-  text-decoration: none;
   color: black;
+}
+.false-button > a {
+  /* ... Including if the child element is an <a> */
+  text-decoration: none;
 }
