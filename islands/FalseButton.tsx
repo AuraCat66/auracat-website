@@ -1,10 +1,8 @@
-import {} from "$fresh/runtime.ts";
-interface FalseButtonProps {
-  children?: string | unknown[];
-  href?: string;
-}
+import { JSX } from "preact";
 
-export default function FalseButton(props: FalseButtonProps) {
+export default function FalseButton(
+  props: JSX.HTMLAttributes<HTMLAnchorElement>,
+) {
   return (
     <div class="false-button">
       <a href={props.href || "./unknown"}>{props.children}</a>

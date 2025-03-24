@@ -60,8 +60,7 @@ a:hover {
   display: flex;
 }
 
-/* Any child of a child of header of class .flex */
-header .flex > * {
+header > .flex > * {
   margin: 0px;
   align-self: stretch;
   display: flex;

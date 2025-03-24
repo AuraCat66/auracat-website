@@ -1,10 +1,9 @@
-import { WebsiteHeader } from "../components/WebsiteHeader.tsx";
+import WebsiteBody from "../components/WebsiteBody.tsx";
 
 export default function Home() {
   return (
     <>
-      <WebsiteHeader></WebsiteHeader>
-      <main class="text-center font-bold">
+      <WebsiteBody class="text-center">
         <h2 style="color: red;">Work In Progress</h2>
         <h1>Hello, welcome to my page!</h1>
         <h3>
@@ -13,7 +12,7 @@ export default function Home() {
         <h3>
           Look at my projects <a href="./portfolio">here</a>
         </h3>
-      </main>
+      </WebsiteBody>
     </>
   );
 }
