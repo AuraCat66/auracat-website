@@ -17,16 +17,20 @@ export default function FalseButton(
       style={{
         width: props.width,
         minHeight: props.minHeight,
-        backgroundColor: props.initialColor ?? colorPalette.skyBlue,
+        backgroundColor: props.initialColor,
       }}
-      onMouseEnter={(e) => {
-        (e.target as HTMLAnchorElement).style.backgroundColor =
-          props.hoverColor ?? colorPalette.mimiPink;
-      }}
-      onMouseLeave={(e) => {
-        (e.target as HTMLAnchorElement).style.backgroundColor =
-          props.initialColor ?? colorPalette.skyBlue;
-      }}
+      onMouseEnter={props.hoverColor
+        ? (e) => {
+          (e.target as HTMLAnchorElement).style.backgroundColor =
+            props.hoverColor ?? "";
+        }
+        : undefined}
+      onMouseLeave={props.initialColor
+        ? (e) => {
+          (e.target as HTMLAnchorElement).style.backgroundColor =
+            props.initialColor ?? "";
+        }
+        : undefined}
     >
       <a
         href={props.href || "./unknown"}
