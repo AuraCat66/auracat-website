@@ -1,5 +1,4 @@
 import { JSX } from "preact";
-import { colorPalette } from "../constants.ts";
 
 interface FalseButtonProps {
   width?: string | number;
