@@ -1,6 +1,6 @@
 # AuraCat's personal website
 
-This is the source code of my personal website, all open source.
+This is the source code of my personal website.
 
 You can find the website [here](https://auracat.deno.dev/).
 
