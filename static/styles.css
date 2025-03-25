@@ -91,7 +91,6 @@ header > .flex > * {
 .false-button {
   display: inline-flex;
   text-align: center;
-  /* Seems to be broken now for some reason? */
   border-radius: 5px;
   width: 6em;
   min-height: 2em;
