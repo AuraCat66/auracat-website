@@ -1,14 +1,13 @@
-import WebsiteBody from "../components/WebsiteBody.tsx";
+import PageTitle from "../components/PageTitle.tsx";
 
 export default function Portfolio() {
   return (
     <>
-      <WebsiteBody pageTitle="Portfolio" class="text-center">
-        <h3>
-          I guess this is gonna be where I show my projects, as a sort of
-          portfolio
-        </h3>
-      </WebsiteBody>
+      <PageTitle>Portfolio</PageTitle>
+      <h3>
+        I guess this is gonna be where I show my projects, as a sort of
+        portfolio
+      </h3>
     </>
   );
 }

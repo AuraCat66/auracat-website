@@ -1,6 +1,5 @@
 import { JSX } from "preact";
 import FalseButton from "../islands/FalseButton.tsx";
-import { colorPalette } from "../constants.ts";
 
 export function WebsiteHeader(props: JSX.HTMLAttributes<HTMLElement>) {
   return (

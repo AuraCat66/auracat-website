@@ -1,10 +1,9 @@
-import WebsiteBody from "../../components/WebsiteBody.tsx";
+import PageTitle from "../../components/PageTitle.tsx";
 
 export default function Blog() {
   return (
     <>
-      <WebsiteBody pageTitle="Blog" class="text-center">
-      </WebsiteBody>
+      <PageTitle>Blog</PageTitle>
     </>
   );
 }

@@ -1,11 +1,10 @@
-import WebsiteBody from "../components/WebsiteBody.tsx";
+import PageTitle from "../components/PageTitle.tsx";
 
 export default function AboutMe() {
   return (
     <>
-      <WebsiteBody pageTitle="About me">
-        <h2 class="text-center">Possibly coming some day...</h2>
-      </WebsiteBody>
+      <PageTitle>About me</PageTitle>
+      <h3>Possibly coming some day...</h3>
     </>
   );
 }
