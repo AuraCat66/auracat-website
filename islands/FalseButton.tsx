@@ -1,35 +1,11 @@
 import { JSX } from "preact";
 
-interface FalseButtonProps {
-  width?: string | number;
-  minHeight?: string | number;
-  initialColor?: string;
-  hoverColor?: string;
-}
-
 export default function FalseButton(
-  props: FalseButtonProps & JSX.HTMLAttributes<HTMLAnchorElement>,
+  props: JSX.HTMLAttributes<HTMLAnchorElement>,
 ) {
   return (
     <div
-      class="false-button"
-      style={{
-        width: props.width,
-        minHeight: props.minHeight,
-        backgroundColor: props.initialColor,
-      }}
-      onMouseEnter={props.hoverColor
-        ? (e) => {
-          (e.target as HTMLDivElement).style.backgroundColor = props
-            .hoverColor!;
-        }
-        : undefined}
-      onMouseLeave={props.initialColor
-        ? (e) => {
-          (e.target as HTMLDivElement).style.backgroundColor = props
-            .initialColor!;
-        }
-        : undefined}
+      class={`${props.class ? `${props.class} ` : ""}false-button`}
     >
       <a
         href={props.href || "./unknown"}

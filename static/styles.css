@@ -1,6 +1,6 @@
 :root {
+  --non-photo-blue: #a7dcf1;
   --vivid-sky-blue: #5bcefaff;
-  --sky-blue: #96d5ee;
   --cherry-blossom-pink: #f5a9b8ff;
   --mimi-pink: #fad4dcff;
   --white: #ffffffff;
@@ -93,7 +93,7 @@ header > .flex > * {
   border-radius: 5px;
   width: 6em;
   min-height: 2em;
-  background: var(--sky-blue);
+  background: var(--non-photo-blue);
   transition: background-color 0.06s ease-in-out;
 }
 .false-button:hover {
@@ -117,4 +117,13 @@ header > .flex > * {
 .false-button > a {
   /* ... Including if the child element is an <a> */
   text-decoration: none;
+}
+
+.homepage-button {
+  width: 5em;
+  min-height: 1.5em;
+  background: var(--mimi-pink);
+}
+.homepage-button:hover {
+  background: var(--non-photo-blue);
 }
