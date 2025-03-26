@@ -87,7 +87,6 @@ header > .flex > * {
 }
 
 /* A simulated button */
-/* This code is attrocious, I'm sorry for your eyes (and for my own eyes) */
 .false-button {
   display: inline-flex;
   text-align: center;
@@ -95,7 +94,7 @@ header > .flex > * {
   width: 6em;
   min-height: 2em;
   background: var(--sky-blue);
-  transition: background-color 0.05s ease-in-out;
+  transition: background-color 0.06s ease-in-out;
 }
 .false-button:hover {
   background: var(--mimi-pink);
