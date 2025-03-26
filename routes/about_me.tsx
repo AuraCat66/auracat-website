@@ -3,10 +3,8 @@ import WebsiteBody from "../components/WebsiteBody.tsx";
 export default function AboutMe() {
   return (
     <>
-      <WebsiteBody>
-        <h1 class="text-center">About me</h1>
-        <br />
-        <h2 class="text-center">Coming some day (when I'm not lazy)</h2>
+      <WebsiteBody pageTitle="About me">
+        <h2 class="text-center">Possibly coming some day...</h2>
       </WebsiteBody>
     </>
   );
