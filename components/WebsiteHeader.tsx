@@ -11,17 +11,17 @@ export function WebsiteHeader(props: JSX.HTMLAttributes<HTMLElement>) {
         <h1 style={{ margin: "10px" }}>
           <FalseButton
             class="homepage-button"
-            href="./"
+            href="/"
           >
             AuraCat
           </FalseButton>
         </h1>
       </div>
       <div class="flex flex-row blue-bg text-center justify-evenly">
-        <FalseButton href="./about_me">About me</FalseButton>
-        <FalseButton href="./portfolio">Portfolio</FalseButton>
-        <FalseButton href="./blog">Blog</FalseButton>
-        <FalseButton href="./contact">Contact</FalseButton>
+        <FalseButton href="/about_me">About me</FalseButton>
+        <FalseButton href="/portfolio">Portfolio</FalseButton>
+        <FalseButton href="/blog">Blog</FalseButton>
+        <FalseButton href="/contact">Contact</FalseButton>
       </div>
     </header>
   );
