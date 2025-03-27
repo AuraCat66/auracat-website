@@ -6,6 +6,7 @@ export default function GayFrog() {
         const gay = (_e.target as HTMLDivElement).children.item(0);
         gay ? (gay as HTMLParagraphElement).style.visibility = "visible" : null;
       }}
+      tabIndex={0}
     >
       <h6 style="visibility: hidden;">
         you've found a hidden gay frog
