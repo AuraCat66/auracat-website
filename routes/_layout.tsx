@@ -7,7 +7,7 @@ export default function Layout({ Component, state }: PageProps) {
   return (
     <div class="layout">
       <WebsiteHeader></WebsiteHeader>
-      <main class="text-center">
+      <main class="text-center font-bold">
         <Component />
       </main>
       <GayFrog></GayFrog>
