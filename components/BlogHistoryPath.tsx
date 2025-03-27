@@ -13,11 +13,11 @@ export function BlogHistoryPath(props: BlogHistoryProps) {
   if (props.path) {
     props.path.map((e, i) => {
       currentPath += `/${e}`;
-      return (
+      elements.push(
         <>
           <a href={currentPath}>{e}</a>
           {i < (props.path!.length - 1) ? " > " : ""}
-        </>
+        </>,
       );
     });
   }
