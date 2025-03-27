@@ -7,6 +7,10 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $about_me from "./routes/about_me.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
+import * as $blog_year_month_day_postID_index from "./routes/blog/[year]/[month]/[day]/[postID]/index.tsx";
+import * as $blog_year_month_day_index from "./routes/blog/[year]/[month]/[day]/index.tsx";
+import * as $blog_year_month_index from "./routes/blog/[year]/[month]/index.tsx";
+import * as $blog_year_index from "./routes/blog/[year]/index.tsx";
 import * as $blog_index from "./routes/blog/index.tsx";
 import * as $contact from "./routes/contact.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
@@ -25,6 +29,11 @@ const manifest = {
     "./routes/_layout.tsx": $_layout,
     "./routes/about_me.tsx": $about_me,
     "./routes/api/joke.ts": $api_joke,
+    "./routes/blog/[year]/[month]/[day]/[postID]/index.tsx":
+      $blog_year_month_day_postID_index,
+    "./routes/blog/[year]/[month]/[day]/index.tsx": $blog_year_month_day_index,
+    "./routes/blog/[year]/[month]/index.tsx": $blog_year_month_index,
+    "./routes/blog/[year]/index.tsx": $blog_year_index,
     "./routes/blog/index.tsx": $blog_index,
     "./routes/contact.tsx": $contact,
     "./routes/greet/[name].tsx": $greet_name_,
