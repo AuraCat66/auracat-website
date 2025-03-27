@@ -10,6 +10,8 @@ export default function FalseButton(
       <a
         href={props.href || "./unknown"}
         tabIndex={0}
+        {...props}
+        class={undefined}
       >
         {props.children}
       </a>
