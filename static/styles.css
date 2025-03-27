@@ -36,7 +36,7 @@ header h1 {
 }
 
 main {
-  margin: 0 5vw;
+  margin: 0 25vw;
 }
 
 a {
@@ -80,6 +80,10 @@ header > .flex > * {
 
 .text-center {
   text-align: center;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .font-bold {
