@@ -66,6 +66,10 @@ header > .flex > * {
   align-items: center;
 }
 
+.page-title {
+  margin-bottom: 0.9em;
+}
+
 .flex-row {
   flex-direction: row;
 }

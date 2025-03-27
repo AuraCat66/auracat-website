@@ -5,7 +5,16 @@ export default function PageTitle(
 ) {
   return (
     <>
-      {props.children ? <h1 {...props}>{props.children}</h1> : null}
+      {props.children
+        ? (
+          <h1
+            {...props}
+            class={`${props.class ? `${props.class} ` : ""}page-title`}
+          >
+            {props.children}
+          </h1>
+        )
+        : null}
     </>
   );
 }
