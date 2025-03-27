@@ -1,6 +1,6 @@
 import { PageProps } from "$fresh/server.ts";
 import { findYear } from "../../../blog_posts/index.ts";
-import { BlogHistoryPath } from "../../../components/BlogHistoryPath.tsx";
+import { NavigationPath } from "../../../components/NavigationPath.tsx";
 import Error404 from "../../_404.tsx";
 
 export default function Year(props: PageProps) {
@@ -12,9 +12,10 @@ export default function Year(props: PageProps) {
   return (
     <>
       <h2>
-        <BlogHistoryPath>
-        </BlogHistoryPath>
-        {props.params.year}
+        <NavigationPath
+          url={props.url}
+        >
+        </NavigationPath>
       </h2>
     </>
   );
