@@ -7,7 +7,10 @@ export default function Layout({ Component, state, url }: PageProps) {
   return (
     <div class="layout">
       <WebsiteHeader></WebsiteHeader>
-      <div class="flex flex-row justify-between font-bold">
+      <div
+        class="flex flex-row justify-between font-bold"
+        style={{ marginTop: "0.5vw" }}
+      >
         <div class="sidebar">
           <NavigationPath url={url}></NavigationPath>
         </div>
