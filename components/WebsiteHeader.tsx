@@ -1,14 +1,16 @@
 import { JSX } from "preact";
 import FalseButton from "../islands/FalseButton.tsx";
 
-export function WebsiteHeader(props: JSX.HTMLAttributes<HTMLElement>) {
+export function WebsiteHeader(
+  props: JSX.HTMLAttributes<HTMLElement>,
+) {
   return (
     <header
       {...props}
       class="flex flex-col"
     >
-      <div class="pink-bg text-center">
-        <h1 style={{ margin: "10px" }}>
+      <div class="pink-bg">
+        <h1 class="text-center" style={{ margin: "10px" }}>
           <FalseButton
             class="homepage-button"
             href="/"

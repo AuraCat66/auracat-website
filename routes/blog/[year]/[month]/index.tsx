@@ -1,6 +1,5 @@
 import { PageProps } from "$fresh/server.ts";
 import { findMonth } from "../../../../blog_posts/index.ts";
-import { NavigationPath } from "../../../../components/NavigationPath.tsx";
 import Error404 from "../../../_404.tsx";
 
 export default function Month(props: PageProps) {
@@ -11,12 +10,6 @@ export default function Month(props: PageProps) {
 
   return (
     <>
-      <h2>
-        <NavigationPath
-          url={props.url}
-        >
-        </NavigationPath>
-      </h2>
     </>
   );
 }

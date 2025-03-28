@@ -1,6 +1,5 @@
 import { PageProps } from "$fresh/server.ts";
 import { findPost } from "../../../../../../blog_posts/index.ts";
-import { NavigationPath } from "../../../../../../components/NavigationPath.tsx";
 import PageTitle from "../../../../../../components/PageTitle.tsx";
 import Error404 from "../../../../../_404.tsx";
 
@@ -18,12 +17,6 @@ export default function BlogPost(props: PageProps) {
 
   return (
     <>
-      <h2>
-        <NavigationPath
-          url={props.url}
-        >
-        </NavigationPath>
-      </h2>
       <PageTitle>{post.title}</PageTitle>
       <div class="text-left">
         {post.content}
