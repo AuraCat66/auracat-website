@@ -8,7 +8,6 @@ export function NavigationPath(props: { url: URL }) {
 
   pagePath.map((e, i) => {
     currentPath += `${e}/`;
-    console.log(currentPath);
     elements.push(
       <>
         {i < pagePath.length - 1
