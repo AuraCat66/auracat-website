@@ -66,9 +66,8 @@ header > .flex > * {
   margin-bottom: 0.9em;
 }
 
-.navigation-path {
-  max-width: 10vw;
-}
+/* Might be used later */
+.navigation-path {}
 
 .flex-row {
   flex-direction: row;
@@ -143,4 +142,5 @@ header > .flex > * {
 .sidebar {
   padding: 2vw;
   min-width: 12vw;
+  max-width: 12vw;
 }
