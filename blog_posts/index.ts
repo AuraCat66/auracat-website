@@ -70,9 +70,8 @@ function loadBlogPosts() {
   function root() {
     for (const yearEntry of Deno.readDirSync(blogPostsDirPath)) {
       if (!yearEntry.isDirectory) continue;
-      console.log(yearEntry);
-      const yearID = yearEntry.name;
 
+      const yearID = yearEntry.name;
       blogPostTree.set(yearID, new Map());
       const year = blogPostTree.get(yearID)!;
 
@@ -86,9 +85,8 @@ function loadBlogPosts() {
       const monthEntry of Deno.readDirSync(`${blogPostsDirPath}/${yearID}/`)
     ) {
       if (!monthEntry.isDirectory) continue;
-      console.log(monthEntry);
-      const monthID = monthEntry.name;
 
+      const monthID = monthEntry.name;
       year.set(monthID, new Map());
       const month = year.get(monthID)!;
 
@@ -104,9 +102,8 @@ function loadBlogPosts() {
       )
     ) {
       if (!dayEntry.isDirectory) continue;
-      console.log(dayEntry);
-      const dayID = dayEntry.name;
 
+      const dayID = dayEntry.name;
       month.set(dayID, new Map());
       const day = month.get(dayID)!;
 
@@ -128,15 +125,15 @@ function loadBlogPosts() {
       )
     ) {
       if (!postEntry.isFile) continue;
-      console.log(postEntry);
-      const postFileName = postEntry.name;
 
+      const postFileName = postEntry.name;
       const split = postFileName.split(".");
+
       const postID = split[0];
       const fileExtension = split[1];
 
       if (fileExtension !== "md") {
-        console.log(
+        console.error(
           `Blog post "${yearID}/${monthID}/${dayID}/${postFileName}" is not a Markdown (.md) file`,
         );
       }
@@ -154,7 +151,6 @@ function loadBlogPosts() {
       };
 
       day.set(postID, post);
-      console.log(post);
     }
   }
 }
