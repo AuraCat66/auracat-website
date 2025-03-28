@@ -34,5 +34,9 @@ export function NavigationPath(props: { url: URL }) {
     );
   });
 
-  return <div class="path-to-current-page">{...elements}</div>;
+  return (
+    <div class="navigation-path">
+      {...elements}
+    </div>
+  );
 }
