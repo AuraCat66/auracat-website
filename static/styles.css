@@ -145,7 +145,7 @@ header > .flex > * {
 }
 
 .sidebar {
-  padding: 2vw;
+  padding: 1.5vw 3vw;
   min-width: 12vw;
   max-width: 12vw;
 }
