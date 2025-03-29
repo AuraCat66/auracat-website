@@ -149,15 +149,12 @@ function loadBlogPosts() {
       const rawMarkdown = new TextDecoder().decode(blogFileData);
       const { attrs, body } = extract(rawMarkdown);
 
-      const lines = body.split("\n");
-      const title = lines[0].replaceAll("#", "").trim();
-      const content = lines.slice(1).join("\n").trim();
       const post: BlogPost = {
         id: postID,
         tags: attrs.tags?.toString().split(",").map((tag) => tag.trim()),
-        title: title,
+        title: attrs.title as string,
         rawContent: rawMarkdown,
-        content: render(content),
+        content: render(body),
       };
 
       day.set(postID, post);
