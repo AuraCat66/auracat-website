@@ -1,6 +1,11 @@
+import { extract } from "$std/front_matter/yaml.ts";
+import { render } from "@deno/gfm";
+
 interface BlogPost {
   id: string;
   title: string;
+  tags: string[] | undefined;
+  rawContent: string;
   content: string;
 }
 
@@ -141,13 +146,18 @@ function loadBlogPosts() {
       const blogFileData = Deno.readFileSync(
         `${path}/${postFileName}`,
       );
-      const blogPostContent = new TextDecoder().decode(blogFileData);
-      const lines = blogPostContent.split("\n");
+      const rawMarkdown = new TextDecoder().decode(blogFileData);
+      const { attrs, body } = extract(rawMarkdown);
 
+      const lines = body.split("\n");
+      const title = lines[0].replaceAll("#", "").trim();
+      const content = lines.slice(1).join("\n").trim();
       const post: BlogPost = {
         id: postID,
-        title: lines[0].split("###")[1].trim(),
-        content: lines.slice(1).join("\n").trim(),
+        tags: attrs.tags?.toString().split(",").map((tag) => tag.trim()),
+        title: title,
+        rawContent: rawMarkdown,
+        content: render(content),
       };
 
       day.set(postID, post);

@@ -18,8 +18,11 @@ export default function BlogPost(props: PageProps) {
   return (
     <>
       <PageTitle>{post.title}</PageTitle>
-      <div class="text-left">
-        {post.content}
+      <div
+        class="markdown-body"
+        // deno-lint-ignore react-no-danger
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      >
       </div>
     </>
   );

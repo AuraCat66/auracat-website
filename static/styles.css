@@ -123,6 +123,10 @@ a:hover {
 /* Might be used later */
 .navigation-path {}
 
+.markdown-body {
+  text-align: left;
+}
+
 /* A simulated button */
 .false-button {
   display: -ms-inline-flexbox;
