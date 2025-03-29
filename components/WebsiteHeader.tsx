@@ -7,12 +7,12 @@ export function WebsiteHeader(
   return (
     <header
       {...props}
-      class="flex flex-col"
+      class="main-header"
     >
-      <div class="pink-bg">
-        <h1 class="text-center" style={{ margin: "10px" }}>
+      <div class="main-bar">
+        <h1 class="text-center" style={{ margin: "8px" }}>
           <FalseButton
-            class="homepage-button"
+            class="website-logo-button"
             href="/"
             title="Return to home page"
           >
@@ -20,7 +20,8 @@ export function WebsiteHeader(
           </FalseButton>
         </h1>
       </div>
-      <div class="flex flex-row blue-bg text-center justify-evenly">
+
+      <div class="nav-bar">
         <FalseButton href="/about_me" title="About me">About me</FalseButton>
         <FalseButton href="/portfolio" title="Portfolio">Portfolio</FalseButton>
         <FalseButton href="/blog" title="Blog">Blog</FalseButton>

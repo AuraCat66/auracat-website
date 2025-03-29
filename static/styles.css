@@ -31,11 +31,8 @@ body {
   background-color: var(--white);
 }
 
-header h1 {
-  font-size: 2.5em;
-}
-
 main {
+  text-align: center;
   width: 100vw;
   padding: 0 5vw;
 }
@@ -61,25 +58,16 @@ a:hover {
   display: flex;
 }
 
-header > .flex > * {
-  margin: 0px;
-  align-self: stretch;
-  align-items: center;
-}
-
-.page-title {
-  margin-bottom: 0.9em;
-}
-
-/* Might be used later */
-.navigation-path {}
-
 .flex-row {
   flex-direction: row;
 }
 
 .flex-col {
   flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
@@ -102,12 +90,47 @@ header > .flex > * {
   font-weight: bold;
 }
 
+.main-header {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+
+  .main-bar {
+    text-align: center;
+    background: var(--cherry-blossom-pink);
+  }
+  .nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+
+    background: var(--vivid-sky-blue);
+  }
+}
+
+.side-bar {
+  padding: 1.5vw 3vw;
+  min-width: 12vw;
+  max-width: 12vw;
+}
+
+.page-title {
+  margin-bottom: 0.9em;
+}
+
+/* Might be used later */
+.navigation-path {}
+
 /* A simulated button */
 .false-button {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
   display: inline-flex;
   text-align: center;
   border-radius: 5px;
-  width: 6em;
+  width: 6.5em;
   min-height: 2em;
   background: var(--non-photo-blue);
   transition: background-color 0.06s ease-in-out;
@@ -135,17 +158,13 @@ header > .flex > * {
   text-decoration: none;
 }
 
-.homepage-button {
+.website-logo-button {
+  margin: 0px;
   width: 5em;
   min-height: 1.5em;
   background: var(--mimi-pink);
+  font-size: 1.3em;
 }
-.homepage-button:hover {
+.website-logo-button:hover {
   background: var(--non-photo-blue);
-}
-
-.sidebar {
-  padding: 1.5vw 3vw;
-  min-width: 12vw;
-  max-width: 12vw;
 }

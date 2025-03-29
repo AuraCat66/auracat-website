@@ -11,17 +11,17 @@ export default function Layout({ Component, state, url }: PageProps) {
         class="flex flex-row justify-between font-bold"
         style={{ marginTop: "0.5vw" }}
       >
-        <div class="sidebar">
+        <div class="side-bar">
           <NavigationPath url={url}></NavigationPath>
         </div>
-        <main class="text-center">
+        <main>
           <Component />
         </main>
         {
           /* Right side bar, only used for balancing the left side bar
         and centering the main content */
         }
-        <div class="sidebar">
+        <div class="side-bar">
         </div>
       </div>
       <GayFrog></GayFrog>
