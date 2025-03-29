@@ -5,7 +5,7 @@ export default function Portfolio() {
     <>
       <PageTitle>Portfolio</PageTitle>
       <h3>
-        I guess this is gonna be where I show my projects, as a sort of
+        I guess this is gonna be where I will display my projects, as a sort of
         portfolio
       </h3>
     </>

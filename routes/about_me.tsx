@@ -35,7 +35,7 @@ export default function AboutMe() {
       </p>
       <p>
         My main programming languages are{" "}
-        <a href="https://www.rust-lang.org/">Rust</a>, and{" "}
+        <a href="https://www.rust-lang.org/">Rust</a> and{" "}
         <a href="https://www.typescriptlang.org/">TypeScript</a>.
       </p>
       <p>
