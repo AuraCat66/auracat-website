@@ -5,6 +5,8 @@ interface BlogPost {
   id: string;
   title: string;
   tags: string[] | undefined;
+  // rawDate: Date;
+  // date: string;
   rawContent: string;
   content: string;
 }
@@ -14,59 +16,29 @@ type DayID = string;
 type MonthID = string;
 type YearID = string;
 
-type Day = Map<PostID, BlogPost>;
-type Month = Map<DayID, Day>;
-type Year = Map<MonthID, Month>;
-type Tree = Map<YearID, Year>;
+export const flatTree = {
+  allPosts: new Map<`${YearID}/${MonthID}/${DayID}/${PostID}`, BlogPost>(),
+  days: new Map<`${YearID}/${MonthID}/${DayID}`, BlogPost[]>(),
+  months: new Map<`${YearID}/${MonthID}`, BlogPost[]>(),
+  years: new Map<YearID, BlogPost[]>(),
 
-export const blogPostTree: Tree = new Map();
+  pushPost: function (
+    yearID: YearID,
+    monthID: MonthID,
+    dayID: DayID,
+    //
+    post: BlogPost,
+  ) {
+    this.years.get(`${yearID}`)!.push(post);
+    this.months.get(`${yearID}/${monthID}`)!.push(post);
+    this.days.get(`${yearID}/${monthID}/${dayID}`)!.push(post);
+    this.allPosts.set(`${yearID}/${monthID}/${dayID}/${post.id}`, post);
+  },
+};
 
 const blogPostsDirPath = new URL("./posts/", import.meta.url).pathname;
 
 loadBlogPosts();
-
-export function postsFromYear(year: Year): BlogPost[] {
-  const posts: BlogPost[] = [];
-  for (const month of year.values()) {
-    for (const day of month.values()) {
-      for (const post of day.values()) {
-        posts.push(post);
-      }
-    }
-  }
-  return posts;
-}
-
-export function findYear(yearID: YearID): Year | undefined {
-  return blogPostTree.get(yearID);
-}
-
-export function findMonth(yearID: YearID, monthID: MonthID): Month | undefined {
-  const year = findYear(yearID);
-  if (!year) return;
-  return year.get(monthID);
-}
-
-export function findDay(
-  yearID: YearID,
-  monthID: MonthID,
-  dayID: DayID,
-): Day | undefined {
-  const month = findMonth(yearID, monthID);
-  if (!month) return;
-  return month.get(dayID);
-}
-
-export function findPost(
-  yearID: YearID,
-  monthID: MonthID,
-  dayID: DayID,
-  postID: PostID,
-): BlogPost | undefined {
-  const day = findDay(yearID, monthID, dayID);
-  if (!day) return;
-  return day.get(postID);
-}
 
 function loadBlogPosts() {
   // First depth: root of the tree, years
@@ -77,30 +49,28 @@ function loadBlogPosts() {
       if (!yearEntry.isDirectory) continue;
 
       const yearID = yearEntry.name;
-      blogPostTree.set(yearID, new Map());
-      const year = blogPostTree.get(yearID)!;
+      flatTree.years.set(yearID, []);
 
       // Second depth: year, months
-      readYear(yearID, year);
+      readYear(yearID);
     }
   }
 
-  function readYear(yearID: string, year: Year) {
+  function readYear(yearID: string) {
     for (
       const monthEntry of Deno.readDirSync(`${blogPostsDirPath}/${yearID}/`)
     ) {
       if (!monthEntry.isDirectory) continue;
 
       const monthID = monthEntry.name;
-      year.set(monthID, new Map());
-      const month = year.get(monthID)!;
+      flatTree.months.set(`${yearID}/${monthID}`, []);
 
       // Third depth: month, days
-      readMonth(yearID, monthID, month);
+      readMonth(yearID, monthID);
     }
   }
 
-  function readMonth(yearID: string, monthID: string, month: Month) {
+  function readMonth(yearID: string, monthID: string) {
     for (
       const dayEntry of Deno.readDirSync(
         `${blogPostsDirPath}/${yearID}/${monthID}/`,
@@ -109,11 +79,10 @@ function loadBlogPosts() {
       if (!dayEntry.isDirectory) continue;
 
       const dayID = dayEntry.name;
-      month.set(dayID, new Map());
-      const day = month.get(dayID)!;
+      flatTree.days.set(`${yearID}/${monthID}/${dayID}`, []);
 
       // Fourth/final layer: day, blog posts
-      readDay(yearID, monthID, dayID, day);
+      readDay(yearID, monthID, dayID);
     }
   }
 
@@ -121,7 +90,6 @@ function loadBlogPosts() {
     yearID: string,
     monthID: string,
     dayID: string,
-    day: Day,
   ) {
     const path = `${blogPostsDirPath}/${yearID}/${monthID}/${dayID}/`;
     for (
@@ -149,15 +117,18 @@ function loadBlogPosts() {
       const rawMarkdown = new TextDecoder().decode(blogFileData);
       const { attrs, body } = extract(rawMarkdown);
 
+      // const rawDate = new Date(`${monthID}/${dayID}/${yearID}`);
+
       const post: BlogPost = {
         id: postID,
         tags: attrs.tags?.toString().split(",").map((tag) => tag.trim()),
         title: attrs.title as string,
-        rawContent: rawMarkdown,
+        rawContent: body,
         content: render(body),
+        // rawDate
       };
 
-      day.set(postID, post);
+      flatTree.pushPost(yearID, monthID, dayID, post);
     }
   }
 }
