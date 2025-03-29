@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /about_me/
+Disallow: /blog/*/
+Disallow: /*?
+Disallow: /*.*
