@@ -9,8 +9,14 @@ export default function Home() {
         You can read more about me <a href="./about_me">here.</a>
       </h3>
       <h3>
-        You can also look at my projects <a href="./portfolio">here</a>
+        You can also find my GitHub and the source code of this website{" "}
+        <a href="https://github.com/AuraCat66/auracat-website">here.</a>
       </h3>
+      {
+        /* <h3>
+        You can also look at my projects <a href="./portfolio">here.</a>
+      </h3> */
+      }
     </>
   );
 }
