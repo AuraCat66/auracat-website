@@ -1,5 +1,5 @@
 import { JSX } from "preact";
-import FalseButton from "../islands/FalseButton.tsx";
+import FalseButton from "./FalseButton.tsx";
 
 export function WebsiteHeader(
   props: JSX.HTMLAttributes<HTMLElement>,
