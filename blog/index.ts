@@ -36,6 +36,15 @@ export const flatTree = {
     this.days.get(`${yearID}/${monthID}/${dayID}`)!.push(article);
     this.articles.set(`${yearID}/${monthID}/${dayID}/${article.id}`, article);
   },
+
+  getArticle: function (
+    yearID: YearID,
+    monthID: MonthID,
+    dayID: DayID,
+    articleID: ArticleID,
+  ): BlogArticle | undefined {
+    return this.articles.get(`${yearID}/${monthID}/${dayID}/${articleID}`);
+  },
 };
 
 function formatArticleDate(date: Date): string {
