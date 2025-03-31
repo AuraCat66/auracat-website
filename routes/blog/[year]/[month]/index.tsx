@@ -1,5 +1,5 @@
 import { PageProps } from "$fresh/server.ts";
-import { flatTree } from "../../../../blog_posts/index.ts";
+import { flatTree } from "../../../../blog/index.ts";
 import Error404 from "../../../_404.tsx";
 
 export default function Month(props: PageProps) {

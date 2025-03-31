@@ -10,7 +10,7 @@ import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 import config from "./fresh.config.ts";
 
-// This is just to initialize the blog posts at startup
-import {} from "./blog_posts/index.ts";
+// This is just to initialize the blog articles at startup
+import {} from "./blog/index.ts";
 
 await start(manifest, config);

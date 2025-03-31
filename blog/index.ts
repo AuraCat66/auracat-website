@@ -1,7 +1,7 @@
 import { extract } from "$std/front_matter/yaml.ts";
 import { render } from "@deno/gfm";
 
-interface BlogPost {
+export interface BlogArticle {
   id: string;
   title: string;
   tags: string[] | undefined;
@@ -17,25 +17,25 @@ type MonthID = string;
 type YearID = string;
 
 export const flatTree = {
-  allPosts: new Map<`${YearID}/${MonthID}/${DayID}/${PostID}`, BlogPost>(),
-  days: new Map<`${YearID}/${MonthID}/${DayID}`, BlogPost[]>(),
-  months: new Map<`${YearID}/${MonthID}`, BlogPost[]>(),
-  years: new Map<YearID, BlogPost[]>(),
+  articles: new Map<`${YearID}/${MonthID}/${DayID}/${PostID}`, BlogArticle>(),
+  days: new Map<`${YearID}/${MonthID}/${DayID}`, BlogArticle[]>(),
+  months: new Map<`${YearID}/${MonthID}`, BlogArticle[]>(),
+  years: new Map<YearID, BlogArticle[]>(),
 
   pushPost: function (
     yearID: YearID,
     monthID: MonthID,
     dayID: DayID,
-    post: BlogPost,
+    article: BlogArticle,
   ) {
-    this.years.get(`${yearID}`)!.push(post);
-    this.months.get(`${yearID}/${monthID}`)!.push(post);
-    this.days.get(`${yearID}/${monthID}/${dayID}`)!.push(post);
-    this.allPosts.set(`${yearID}/${monthID}/${dayID}/${post.id}`, post);
+    this.years.get(`${yearID}`)!.push(article);
+    this.months.get(`${yearID}/${monthID}`)!.push(article);
+    this.days.get(`${yearID}/${monthID}/${dayID}`)!.push(article);
+    this.articles.set(`${yearID}/${monthID}/${dayID}/${article.id}`, article);
   },
 };
 
-function formatPostDate(date: Date): string {
+function formatArticleDate(date: Date): string {
   const longFormat = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "long",
@@ -44,16 +44,16 @@ function formatPostDate(date: Date): string {
   return longFormat.format(date);
 }
 
-const blogPostsDirPath = new URL("./posts/", import.meta.url).pathname;
+const blogArticlesPath = new URL("./articles/", import.meta.url).pathname;
 
-loadBlogPosts();
+loadBlogArticles();
 
-function loadBlogPosts() {
+function loadBlogArticles() {
   // First depth: root of the tree, years
   root();
 
   function root() {
-    for (const yearEntry of Deno.readDirSync(blogPostsDirPath)) {
+    for (const yearEntry of Deno.readDirSync(blogArticlesPath)) {
       if (!yearEntry.isDirectory) continue;
 
       const yearID = yearEntry.name;
@@ -66,7 +66,7 @@ function loadBlogPosts() {
 
   function readYear(yearID: string) {
     for (
-      const monthEntry of Deno.readDirSync(`${blogPostsDirPath}/${yearID}/`)
+      const monthEntry of Deno.readDirSync(`${blogArticlesPath}/${yearID}/`)
     ) {
       if (!monthEntry.isDirectory) continue;
 
@@ -81,7 +81,7 @@ function loadBlogPosts() {
   function readMonth(yearID: string, monthID: string) {
     for (
       const dayEntry of Deno.readDirSync(
-        `${blogPostsDirPath}/${yearID}/${monthID}/`,
+        `${blogArticlesPath}/${yearID}/${monthID}/`,
       )
     ) {
       if (!dayEntry.isDirectory) continue;
@@ -89,7 +89,7 @@ function loadBlogPosts() {
       const dayID = dayEntry.name;
       flatTree.days.set(`${yearID}/${monthID}/${dayID}`, []);
 
-      // Fourth/final layer: day, blog posts
+      // Fourth/final layer: day, blog articles
       readDay(yearID, monthID, dayID);
     }
   }
@@ -99,45 +99,45 @@ function loadBlogPosts() {
     monthID: string,
     dayID: string,
   ) {
-    const path = `${blogPostsDirPath}/${yearID}/${monthID}/${dayID}/`;
+    const path = `${blogArticlesPath}/${yearID}/${monthID}/${dayID}/`;
     for (
-      const postEntry of Deno.readDirSync(
+      const articleEntry of Deno.readDirSync(
         path,
       )
     ) {
-      if (!postEntry.isFile) continue;
+      if (!articleEntry.isFile) continue;
 
-      const postFileName = postEntry.name;
-      const split = postFileName.split(".");
+      const articleFileName = articleEntry.name;
+      const split = articleFileName.split(".");
 
-      const postID = split[0];
+      const articleID = split[0];
       const fileExtension = split[1];
 
       if (fileExtension !== "md") {
         console.error(
-          `Blog post "${yearID}/${monthID}/${dayID}/${postFileName}" is not a Markdown (.md) file`,
+          `Blog article "${yearID}/${monthID}/${dayID}/${articleFileName}" is not a Markdown (.md) file`,
         );
       }
 
       const blogFileData = Deno.readFileSync(
-        `${path}/${postFileName}`,
+        `${path}/${articleFileName}`,
       );
       const rawMarkdown = new TextDecoder().decode(blogFileData);
       const { attrs, body } = extract(rawMarkdown);
 
       const rawDate = new Date(`${monthID}/${dayID}/${yearID}`);
 
-      const post: BlogPost = {
-        id: postID,
+      const article: BlogArticle = {
+        id: articleID,
         tags: attrs.tags?.toString().split(",").map((tag) => tag.trim()),
         title: attrs.title as string,
         rawDate: rawDate,
-        date: formatPostDate(rawDate),
+        date: formatArticleDate(rawDate),
         rawContent: body,
         content: render(body),
       };
 
-      flatTree.pushPost(yearID, monthID, dayID, post);
+      flatTree.pushPost(yearID, monthID, dayID, article);
     }
   }
 }

@@ -1,11 +1,12 @@
 import { PageProps } from "$fresh/server.ts";
-import { flatTree } from "../../../../../../blog_posts/index.ts";
+import { flatTree } from "../../../../../../blog/index.ts";
+
 import PageTitle from "../../../../../../components/PageTitle.tsx";
 import Error404 from "../../../../../_404.tsx";
 
-export default function BlogPost(props: PageProps) {
+export default function Article(props: PageProps) {
   const { year, month, day, postID } = props.params;
-  const post = flatTree.allPosts.get(`${year}/${month}/${day}/${postID}`);
+  const post = flatTree.articles.get(`${year}/${month}/${day}/${postID}`);
   if (!post) {
     return <Error404></Error404>;
   }
