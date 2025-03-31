@@ -23,7 +23,7 @@ export default function Article(
       <PageTitle style={{ marginBottom: 0 }}>
         {article.title}
       </PageTitle>
-      <p style={{ color: "grey", fontSize: "1.2em" }}>
+      <p class="blog-article-date">
         {article.formattedDate}
       </p>
       <div

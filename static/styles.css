@@ -173,3 +173,41 @@ a:hover {
 .website-logo-button:hover {
   background: var(--non-photo-blue);
 }
+
+.blog-article-date {
+  color: #5e5e5e;
+  font-size: 1.2em;
+}
+
+.blog-article-preview {
+  background-color: #e4e4e4;
+  font-size: 0.95em;
+
+  border-radius: 15px;
+  border-color: #a1a1a1;
+  border-style: solid;
+
+  margin-bottom: 0.4em;
+  padding: 0.5em 1em 1em;
+
+  .blog-article-date {
+    line-height: 0;
+  }
+  .preview-title {
+    * {
+      margin-bottom: 0;
+    }
+  }
+  .preview-content {
+    font-size: 0.75em;
+    background-color: inherit;
+    border-radius: inherit;
+    border-color: inherit;
+    p {
+      font-size: 1.05em;
+    }
+  }
+  .link-to-article {
+    font-size: 1rem;
+  }
+}

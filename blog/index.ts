@@ -1,5 +1,5 @@
 import { extract } from "$std/front_matter/yaml.ts";
-import { processRawArticle } from "./articleFns.ts";
+import { processRawArticle } from "./articleFns.tsx";
 
 export interface ArticleData {
   id: string;
@@ -10,6 +10,7 @@ export interface ArticleData {
   dateParts: { day: DayID; month: MonthID; year: YearID };
   url: `/blog/${YearID}/${MonthID}/${DayID}/${ArticleID}`;
   content: string;
+  preview: string;
 }
 
 export type ArticleID = string;
