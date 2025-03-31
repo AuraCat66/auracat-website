@@ -23,7 +23,9 @@ export default function Article(
       <PageTitle style={{ marginBottom: 0 }}>
         {article.title}
       </PageTitle>
-      <p style={{ color: "grey", fontSize: "1.2em" }}>{article.date}</p>
+      <p style={{ color: "grey", fontSize: "1.2em" }}>
+        {article.formattedDate}
+      </p>
       <div
         class="markdown-body"
         // deno-lint-ignore react-no-danger
