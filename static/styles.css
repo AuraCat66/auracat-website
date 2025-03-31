@@ -117,7 +117,8 @@ a:hover {
 }
 
 .page-title {
-  margin-bottom: 0.9em;
+  margin-top: 0.6em;
+  font-size: 2em;
 }
 
 /* Might be used later */
