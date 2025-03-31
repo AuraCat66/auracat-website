@@ -11,13 +11,16 @@ export interface BlogArticle {
   content: string;
 }
 
-type PostID = string;
+type ArticleID = string;
 type DayID = string;
 type MonthID = string;
 type YearID = string;
 
 export const flatTree = {
-  articles: new Map<`${YearID}/${MonthID}/${DayID}/${PostID}`, BlogArticle>(),
+  articles: new Map<
+    `${YearID}/${MonthID}/${DayID}/${ArticleID}`,
+    BlogArticle
+  >(),
   days: new Map<`${YearID}/${MonthID}/${DayID}`, BlogArticle[]>(),
   months: new Map<`${YearID}/${MonthID}`, BlogArticle[]>(),
   years: new Map<YearID, BlogArticle[]>(),

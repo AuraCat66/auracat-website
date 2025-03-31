@@ -1,5 +1,5 @@
 ---
-title: This is a test blog post
+title: This is a test blog article
 tags: test
 ---
 
