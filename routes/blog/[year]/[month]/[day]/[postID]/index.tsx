@@ -12,7 +12,10 @@ export default function BlogPost(props: PageProps) {
 
   return (
     <>
-      <PageTitle>{post.title}</PageTitle>
+      <PageTitle style={{ lineHeight: "0.4em" }}>
+        {post.title}
+        <p style={{ color: "grey", fontSize: "0.7em" }}>{post.date}</p>
+      </PageTitle>
       <div
         class="markdown-body"
         // deno-lint-ignore react-no-danger

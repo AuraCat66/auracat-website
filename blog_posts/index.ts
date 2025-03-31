@@ -5,8 +5,8 @@ interface BlogPost {
   id: string;
   title: string;
   tags: string[] | undefined;
-  // rawDate: Date;
-  // date: string;
+  rawDate: Date;
+  date: string;
   rawContent: string;
   content: string;
 }
@@ -26,7 +26,6 @@ export const flatTree = {
     yearID: YearID,
     monthID: MonthID,
     dayID: DayID,
-    //
     post: BlogPost,
   ) {
     this.years.get(`${yearID}`)!.push(post);
@@ -35,6 +34,15 @@ export const flatTree = {
     this.allPosts.set(`${yearID}/${monthID}/${dayID}/${post.id}`, post);
   },
 };
+
+function formatPostDate(date: Date): string {
+  const longFormat = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  return longFormat.format(date);
+}
 
 const blogPostsDirPath = new URL("./posts/", import.meta.url).pathname;
 
@@ -117,15 +125,16 @@ function loadBlogPosts() {
       const rawMarkdown = new TextDecoder().decode(blogFileData);
       const { attrs, body } = extract(rawMarkdown);
 
-      // const rawDate = new Date(`${monthID}/${dayID}/${yearID}`);
+      const rawDate = new Date(`${monthID}/${dayID}/${yearID}`);
 
       const post: BlogPost = {
         id: postID,
         tags: attrs.tags?.toString().split(",").map((tag) => tag.trim()),
         title: attrs.title as string,
+        rawDate: rawDate,
+        date: formatPostDate(rawDate),
         rawContent: body,
         content: render(body),
-        // rawDate
       };
 
       flatTree.pushPost(yearID, monthID, dayID, post);
