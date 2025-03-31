@@ -46,6 +46,25 @@ export const flatTree = {
   ): ArticleData | undefined {
     return this.articles.get(`${yearID}/${monthID}/${dayID}/${articleID}`);
   },
+
+  getDay: function (
+    yearID: YearID,
+    monthID: MonthID,
+    dayID: DayID,
+  ): ArticleData[] | undefined {
+    return this.days.get(`${yearID}/${monthID}/${dayID}`);
+  },
+
+  getMonth: function (
+    yearID: YearID,
+    monthID: MonthID,
+  ): ArticleData[] | undefined {
+    return this.months.get(`${yearID}/${monthID}`);
+  },
+
+  getYear: function (yearID: YearID): ArticleData[] | undefined {
+    return this.years.get(yearID);
+  },
 };
 
 const blogArticlesPath = new URL("./articles/", import.meta.url).pathname;
