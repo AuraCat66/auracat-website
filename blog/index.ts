@@ -22,7 +22,7 @@ export const flatTree = {
   months: new Map<`${YearID}/${MonthID}`, BlogArticle[]>(),
   years: new Map<YearID, BlogArticle[]>(),
 
-  pushPost: function (
+  pushArticle: function (
     yearID: YearID,
     monthID: MonthID,
     dayID: DayID,
@@ -137,7 +137,7 @@ function loadBlogArticles() {
         content: render(body),
       };
 
-      flatTree.pushPost(yearID, monthID, dayID, article);
+      flatTree.pushArticle(yearID, monthID, dayID, article);
     }
   }
 }
