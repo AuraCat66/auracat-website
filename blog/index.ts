@@ -23,6 +23,7 @@ export const flatTree = {
     `${YearID}/${MonthID}/${DayID}/${ArticleID}`,
     ArticleData
   >(),
+  articleArray: [] as ArticleData[],
   days: new Map<`${YearID}/${MonthID}/${DayID}`, ArticleData[]>(),
   months: new Map<`${YearID}/${MonthID}`, ArticleData[]>(),
   years: new Map<YearID, ArticleData[]>(),
@@ -37,6 +38,7 @@ export const flatTree = {
     this.months.get(`${yearID}/${monthID}`)!.push(article);
     this.days.get(`${yearID}/${monthID}/${dayID}`)!.push(article);
     this.articles.set(`${yearID}/${monthID}/${dayID}/${article.id}`, article);
+    this.articleArray.push(article);
   },
 
   getArticle: function (
