@@ -1,14 +1,23 @@
-import { PageProps } from "$fresh/server.ts";
-import { flatTree } from "../../../../blog/index.ts";
-import Error404 from "../../../_404.tsx";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { ArticleData, flatTree } from "../../../../blog/index.ts";
 
-export default function Month(props: PageProps) {
-  const month = flatTree.months.get(
-    `${props.params.year}/${props.params.month}`,
-  );
-  if (!month) {
-    return <Error404></Error404>;
-  }
+export const handler: Handlers = {
+  async GET(_req, ctx) {
+    const { year, month } = ctx.params;
+
+    const articles = flatTree.getMonth(year, month);
+    if (!articles) return await ctx.renderNotFound();
+
+    return await ctx.render({ articles, year, month });
+  },
+};
+
+export default function Month(
+  props:
+    & { data: { articles: ArticleData[]; year: string; month: string } }
+    & Omit<PageProps, "data">,
+) {
+  const { articles, year, month } = props.data;
 
   return (
     <>
