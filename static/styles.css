@@ -2,6 +2,7 @@
   --non-photo-blue: #a7dcf1;
   --vivid-sky-blue: #5bcefaff;
   --cherry-blossom-pink: #f5a9b8ff;
+  --amaranth: #e5244b;
   --mimi-pink: #fad4dcff;
   --white: #ffffffff;
 }
@@ -175,16 +176,16 @@ a:hover {
 }
 
 .blog-article-date {
-  color: #5e5e5e;
+  color: #e52447;
   font-size: 1.2em;
 }
 
 .blog-article-preview {
-  background-color: #e4e4e4;
+  background-color: var(--mimi-pink);
   font-size: 0.95em;
 
   border-radius: 15px;
-  border-color: #a1a1a1;
+  border-color: var(--cherry-blossom-pink);
   border-style: solid;
 
   margin-bottom: 0.4em;
