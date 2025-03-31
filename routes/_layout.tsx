@@ -7,23 +7,25 @@ export default function Layout({ Component, state, url }: PageProps) {
   return (
     <div class="layout">
       <WebsiteHeader></WebsiteHeader>
-      <div
-        class="flex flex-row justify-between font-bold"
-        style={{ marginTop: "0.5vw" }}
-      >
-        <div class="side-bar">
-          <NavigationPath url={url}></NavigationPath>
-        </div>
-        <main>
-          <Component />
-        </main>
-        {
-          /* Right side bar, only used for balancing the left side bar
+      <main>
+        <div
+          class="flex flex-row justify-between font-bold"
+          style={{ marginTop: "0.5vw" }}
+        >
+          <div class="side-bar">
+            <NavigationPath url={url}></NavigationPath>
+          </div>
+          <article>
+            <Component />
+          </article>
+          {
+            /* Right side bar, only used for balancing the left side bar
         and centering the main content */
-        }
-        <div class="side-bar">
+          }
+          <div class="side-bar">
+          </div>
         </div>
-      </div>
+      </main>
       <GayFrog></GayFrog>
     </div>
   );

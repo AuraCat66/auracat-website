@@ -31,7 +31,7 @@ body {
   background-color: var(--white);
 }
 
-main {
+article {
   text-align: center;
   width: 100vw;
   padding: 0 5vw;
