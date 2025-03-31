@@ -4,9 +4,10 @@ import { flatTree } from "../../../../../../blog/index.ts";
 import PageTitle from "../../../../../../components/PageTitle.tsx";
 import Error404 from "../../../../../_404.tsx";
 
+// todo: export default function Article(props: { post: BlogArticle } & PageProps) {
 export default function Article(props: PageProps) {
-  const { year, month, day, postID } = props.params;
-  const post = flatTree.articles.get(`${year}/${month}/${day}/${postID}`);
+  const { year, month, day, articleID } = props.params;
+  const post = flatTree.articles.get(`${year}/${month}/${day}/${articleID}`);
   if (!post) {
     return <Error404></Error404>;
   }
