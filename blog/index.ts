@@ -1,35 +1,36 @@
 import { extract } from "$std/front_matter/yaml.ts";
-import { render } from "@deno/gfm";
+import { processRawArticle } from "./articleFns.ts";
 
-export interface BlogArticle {
+export interface ArticleData {
   id: string;
   title: string;
   tags: string[] | undefined;
-  rawDate: Date;
-  date: string;
-  rawContent: string;
+  date: Date;
+  formattedDate: string;
+  dateParts: { day: DayID; month: MonthID; year: YearID };
+  url: `/blog/${YearID}/${MonthID}/${DayID}/${ArticleID}`;
   content: string;
 }
 
-type ArticleID = string;
-type DayID = string;
-type MonthID = string;
-type YearID = string;
+export type ArticleID = string;
+export type DayID = string;
+export type MonthID = string;
+export type YearID = string;
 
 export const flatTree = {
   articles: new Map<
     `${YearID}/${MonthID}/${DayID}/${ArticleID}`,
-    BlogArticle
+    ArticleData
   >(),
-  days: new Map<`${YearID}/${MonthID}/${DayID}`, BlogArticle[]>(),
-  months: new Map<`${YearID}/${MonthID}`, BlogArticle[]>(),
-  years: new Map<YearID, BlogArticle[]>(),
+  days: new Map<`${YearID}/${MonthID}/${DayID}`, ArticleData[]>(),
+  months: new Map<`${YearID}/${MonthID}`, ArticleData[]>(),
+  years: new Map<YearID, ArticleData[]>(),
 
   pushArticle: function (
     yearID: YearID,
     monthID: MonthID,
     dayID: DayID,
-    article: BlogArticle,
+    article: ArticleData,
   ) {
     this.years.get(`${yearID}`)!.push(article);
     this.months.get(`${yearID}/${monthID}`)!.push(article);
@@ -42,19 +43,10 @@ export const flatTree = {
     monthID: MonthID,
     dayID: DayID,
     articleID: ArticleID,
-  ): BlogArticle | undefined {
+  ): ArticleData | undefined {
     return this.articles.get(`${yearID}/${monthID}/${dayID}/${articleID}`);
   },
 };
-
-function formatArticleDate(date: Date): string {
-  const longFormat = new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-  return longFormat.format(date);
-}
 
 const blogArticlesPath = new URL("./articles/", import.meta.url).pathname;
 
@@ -135,19 +127,18 @@ function loadBlogArticles() {
         `${path}/${articleFileName}`,
       );
       const rawMarkdown = new TextDecoder().decode(blogFileData);
-      const { attrs, body } = extract(rawMarkdown);
+      const extractedData = extract(rawMarkdown);
 
-      const rawDate = new Date(`${monthID}/${dayID}/${yearID}`);
+      const date = new Date(`${monthID}/${dayID}/${yearID}`);
 
-      const article: BlogArticle = {
+      const article = processRawArticle({
         id: articleID,
-        tags: attrs.tags?.toString().split(",").map((tag) => tag.trim()),
-        title: attrs.title as string,
-        rawDate: rawDate,
-        date: formatArticleDate(rawDate),
-        rawContent: body,
-        content: render(body),
-      };
+        extractedData,
+        date,
+        day: dayID,
+        month: monthID,
+        year: yearID,
+      });
 
       flatTree.pushArticle(yearID, monthID, dayID, article);
     }
