@@ -1,4 +1,5 @@
-import { Extract } from "$std/front_matter/create_extractor.ts";
+import { Extract } from "@std/front-matter/any";
+import { assert } from "@std/assert";
 import { render } from "@deno/gfm";
 import { ArticleData, ArticleID, DayID, MonthID, YearID } from "./index.ts";
 import ArticlePreview from "../components/BlogArticlePreview.tsx";
@@ -7,7 +8,7 @@ const articleContentMaxLength = 1000;
 
 export function processRawArticle(rawData: {
   id: ArticleID;
-  extractedData: Extract<Record<string, unknown>>;
+  extractedData: Extract<unknown>;
   date: Date;
   day: DayID;
   month: MonthID;
@@ -15,6 +16,7 @@ export function processRawArticle(rawData: {
 }): ArticleData {
   const { id, extractedData, date, day, month, year } = rawData;
   const { attrs, body } = extractedData;
+  assert(typeof attrs === "object", "attrs should be an object");
 
   let preview = body.slice(0, articleContentMaxLength);
   if (body.length > articleContentMaxLength) {

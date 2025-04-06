@@ -1,4 +1,4 @@
-import { extract } from "$std/front_matter/yaml.ts";
+import { extractYaml } from "@std/front-matter";
 import { processRawArticle } from "./articleFns.tsx";
 
 export interface ArticleData {
@@ -149,7 +149,7 @@ function loadBlogArticles() {
         `${path}/${articleFileName}`,
       );
       const rawMarkdown = new TextDecoder().decode(blogFileData);
-      const extractedData = extract(rawMarkdown);
+      const extractedData = extractYaml(rawMarkdown);
 
       const date = new Date(`${monthID}/${dayID}/${yearID}`);
 
