@@ -24,14 +24,24 @@ export default function AboutMe() {
         </a>.
       </p>
       <p>
+        I like programming, languages/dialectology, playing videogames, also IT
+        and tinkering with stuff sometimes.
+        <br />
+        I am also quite curious and interested by a lot of stuff.
+      </p>
+      <p>
         I speak French (native lang), English, Spanish, Catalan, as well as some
         Occitan.
       </p>
       <p>
         I am a fierce advocate of marginalized languages/varieties and cultures.
+        <br />
+        I am also strongly against any kinds of oppressions and discriminations
+        in the world.
       </p>
       <p>
-        I like programming, as well as languages and dialectology.
+        I can get tired, burnt out or overwhelmed pretty easily, and I have a
+        very low social battery.
       </p>
       <p>
         My main programming languages are{" "}
@@ -39,8 +49,9 @@ export default function AboutMe() {
         <a href="https://www.typescriptlang.org/">TypeScript</a>.
       </p>
       <p>
-        I don't have a lot of projects but I might make more over time, that
-        will be displayed in my <a href="/portfolio">portfolio</a>.
+        I don't have a lot of projects right now, and I work a bit slowly, but I
+        might make more projects over time, that will be displayed in my{" "}
+        <a href="/portfolio">portfolio</a>.
       </p>
       <p>
         And by the way, I do not claim to be a very experimented or
