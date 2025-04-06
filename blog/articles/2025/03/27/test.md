@@ -1,6 +1,6 @@
 ---
 title: This is a test blog article
-tags: test
+tags: [test]
 ---
 
 ## :3

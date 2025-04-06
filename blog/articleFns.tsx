@@ -16,7 +16,7 @@ export function processRawArticle(rawData: {
 }): ArticleData {
   const { id, extractedData, date, day, month, year } = rawData;
   const { attrs, body } = extractedData;
-  assert(typeof attrs === "object", "attrs should be an object");
+  isAttrsValid(attrs);
 
   let preview = body.slice(0, articleContentMaxLength);
   if (body.length > articleContentMaxLength) {
@@ -25,8 +25,11 @@ export function processRawArticle(rawData: {
 
   return {
     id,
-    title: attrs.title as string,
-    tags: attrs.tags?.toString().split(",").map((tag) => tag.trim()),
+    title: attrs.title,
+    tags: attrs.tags.map((tag) => {
+      assert(typeof tag === "string");
+      return tag.trim();
+    }),
     date,
     formattedDate: getFormattedFullDate(date),
     dateParts: { day, month, year },
@@ -34,6 +37,23 @@ export function processRawArticle(rawData: {
     content: render(body),
     preview: render(preview),
   };
+}
+
+function isAttrsValid(
+  attrs: unknown,
+): asserts attrs is { title: string; tags: unknown[] } {
+  assert(
+    typeof attrs === "object" && attrs !== null,
+    "attrs should be an object",
+  );
+  assert(
+    "title" in attrs && typeof attrs.title === "string",
+    "title should be present in attrs and should be a string",
+  );
+  assert(
+    "tags" in attrs && Array.isArray(attrs.tags),
+    "tags should be present in attrs and should be an array",
+  );
 }
 
 function getFormattedFullDate(date: Date): string {

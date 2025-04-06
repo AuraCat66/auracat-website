@@ -1,6 +1,6 @@
 ---
 title: This is a very very very very very very long title
-tags: test
+tags: [test, test]
 ---
 
 ## this is a very long and important section header
