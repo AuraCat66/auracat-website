@@ -16,7 +16,10 @@ export function processRawArticle(rawData: {
   const { id, extractedData, date, day, month, year } = rawData;
   const { attrs, body } = extractedData;
 
-  const preview = body.slice(0, articleContentMaxLength);
+  let preview = body.slice(0, articleContentMaxLength);
+  if (body.length > articleContentMaxLength) {
+    preview += "...";
+  }
 
   return {
     id,
