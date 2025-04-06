@@ -18,8 +18,10 @@ export function processRawArticle(rawData: {
   const { attrs, body } = extractedData;
   isAttrsValid(attrs);
 
-  let preview = body.slice(0, articleContentMaxLength);
-  if (body.length > articleContentMaxLength) {
+  const trimedBody = body.trim();
+
+  let preview = trimedBody.slice(0, articleContentMaxLength);
+  if (trimedBody.length > articleContentMaxLength) {
     preview += "...";
   }
 
@@ -34,7 +36,7 @@ export function processRawArticle(rawData: {
     formattedDate: getFormattedFullDate(date),
     dateParts: { day, month, year },
     url: `/blog/${year}/${month}/${day}/${id}`,
-    content: render(body),
+    content: render(trimedBody),
     preview: render(preview),
   };
 }
