@@ -11,9 +11,9 @@ export default function ArticlePreview(
         href={articleData.url}
         class="preview-title"
       >
-        <h2>
+        <h1>
           {articleData.title}
-        </h2>
+        </h1>
       </a>
       <div class="preview-content markdown-body">
         <div
