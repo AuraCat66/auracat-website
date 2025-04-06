@@ -181,14 +181,12 @@ a:hover {
 }
 
 .blog-article-preview {
-  background-color: var(--mimi-pink);
-  font-size: 0.95em;
+  font-size: 1em;
 
-  border-radius: 15px;
-  border-color: var(--cherry-blossom-pink);
-  border-style: solid;
+  border: 5px solid var(--cherry-blossom-pink);
+  border-radius: 10px;
 
-  margin-bottom: 0.4em;
+  margin-bottom: 5px;
   padding: 0.5em 1em 1em;
 
   .blog-article-date {
@@ -200,12 +198,12 @@ a:hover {
     }
   }
   .preview-content {
-    font-size: 0.75em;
+    font-size: 0.7em;
     background-color: inherit;
     border-radius: inherit;
     border-color: inherit;
     p {
-      font-size: 1.05em;
+      font-size: 1.1em;
     }
   }
   .link-to-article {
