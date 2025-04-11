@@ -1,7 +1,11 @@
 import { ArticleData } from "../blog/index.ts";
 
+interface ArticlePreviewProps {
+  data: ArticleData;
+}
+
 export default function ArticlePreview(
-  { data: articleData }: { data: ArticleData },
+  { data: articleData }: ArticlePreviewProps,
 ) {
   return (
     <div class="blog-article-preview">
