@@ -1,5 +1,6 @@
 import { extractYaml } from "@std/front-matter";
 import { processRawArticle } from "./articleFns.tsx";
+import { fromFileUrl, join } from "@std/path";
 
 export interface ArticleData {
   id: string;
@@ -70,8 +71,12 @@ export const flatTree = {
   },
 };
 
-const blogArticlesPath =
-  new URL("./articles/", import.meta.url.replace("file:///", "")).pathname;
+const blogArticlesPath = join(
+  fromFileUrl(import.meta.url),
+  "..",
+  "articles",
+);
+console.log(blogArticlesPath);
 
 loadBlogArticles();
 
