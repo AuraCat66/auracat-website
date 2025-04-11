@@ -70,7 +70,8 @@ export const flatTree = {
   },
 };
 
-const blogArticlesPath = new URL("./articles/", import.meta.url).pathname;
+const blogArticlesPath =
+  new URL("./articles/", import.meta.url.replace("file:///", "")).pathname;
 
 loadBlogArticles();
 
