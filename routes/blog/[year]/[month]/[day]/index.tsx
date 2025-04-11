@@ -1,5 +1,10 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import {
+  generateArticlePreviews,
+  getFormattedFullDate,
+} from "../../../../../blog/articleFns.tsx";
 import { ArticleData, flatTree } from "../../../../../blog/index.ts";
+import PageTitle from "../../../../../components/PageTitle.tsx";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -28,6 +33,14 @@ export default function Day(
 
   return (
     <>
+      <PageTitle>
+        Blog articles from{" "}
+        {getFormattedFullDate(new Date(`${year}/${month}/${day}`))}
+      </PageTitle>
+
+      <div class="text-left">
+        {generateArticlePreviews(articles)}
+      </div>
     </>
   );
 }

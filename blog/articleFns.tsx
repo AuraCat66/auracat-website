@@ -58,7 +58,7 @@ function isAttrsValid(
   );
 }
 
-function getFormattedFullDate(date: Date): string {
+export function getFormattedFullDate(date: Date): string {
   const longFormat = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "long",
@@ -66,6 +66,14 @@ function getFormattedFullDate(date: Date): string {
   });
 
   return longFormat.format(date);
+}
+
+export function getFormattedYearAndMonth(date: Date): string {
+  const yearMonthFormat = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+  });
+  return yearMonthFormat.format(date);
 }
 
 export function getFormattedYear(date: Date): string {
@@ -76,7 +84,6 @@ export function getFormattedYear(date: Date): string {
 export function generateArticlePreviews(articles: ArticleData[]) {
   return articles.map((articleData) => (
     <ArticlePreview
-      key={articleData.id}
       data={articleData}
     />
   ));
