@@ -40,18 +40,14 @@ export default function AboutMe() {
         in the world.
       </p>
       <p>
-        I can get tired, burnt out or overwhelmed pretty easily, and I have a
-        very low social battery.
-      </p>
-      <p>
         My main programming languages are{" "}
         <a href="https://www.rust-lang.org/">Rust</a> and{" "}
         <a href="https://www.typescriptlang.org/">TypeScript</a>.
       </p>
       <p>
-        I don't have a lot of projects right now, and I work a bit slowly, but I
-        might make more projects over time, that will be displayed in my{" "}
-        <a href="/portfolio">portfolio</a>.
+        I don't have a lot of projects right now, and I work a bit slowly and
+        whenever I feel like it, but I might make more projects over time, that
+        will be displayed in my <a href="/portfolio">portfolio</a>.
       </p>
       <p>
         And by the way, I do not claim to be a very experimented or
