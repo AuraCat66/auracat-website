@@ -76,7 +76,6 @@ const blogArticlesPath = join(
   "..",
   "articles",
 );
-console.log(blogArticlesPath);
 
 loadBlogArticles();
 
