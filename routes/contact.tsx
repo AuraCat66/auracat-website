@@ -5,8 +5,8 @@ export default function Contact() {
     <>
       <PageTitle>Contact</PageTitle>
       <h3>
-        Not sure how I'm gonna implement it, but this is gonna be some sort of
-        contact page eventually
+        This is gonna be a contact page at some point, I am still figuring out
+        exactly how I want to do it.
       </h3>
     </>
   );
