@@ -84,7 +84,10 @@ function loadBlogArticles() {
   root();
 
   function root() {
-    for (const yearEntry of Deno.readDirSync(blogArticlesPath)) {
+    const path = blogArticlesPath;
+    const yearEntries = Deno.readDirSync(path).toArray().reverse();
+
+    for (const yearEntry of yearEntries) {
       if (!yearEntry.isDirectory) continue;
 
       const yearID = yearEntry.name;
@@ -96,9 +99,12 @@ function loadBlogArticles() {
   }
 
   function readYear(yearID: string) {
-    for (
-      const monthEntry of Deno.readDirSync(`${blogArticlesPath}/${yearID}/`)
-    ) {
+    const path = `${blogArticlesPath}/${yearID}/`;
+    const monthEntries = Deno.readDirSync(path)
+      .toArray()
+      .reverse();
+
+    for (const monthEntry of monthEntries) {
       if (!monthEntry.isDirectory) continue;
 
       const monthID = monthEntry.name;
@@ -110,11 +116,12 @@ function loadBlogArticles() {
   }
 
   function readMonth(yearID: string, monthID: string) {
-    for (
-      const dayEntry of Deno.readDirSync(
-        `${blogArticlesPath}/${yearID}/${monthID}/`,
-      )
-    ) {
+    const path = `${blogArticlesPath}/${yearID}/${monthID}/`;
+    const dayEntries = Deno.readDirSync(
+      path,
+    ).toArray().reverse();
+
+    for (const dayEntry of dayEntries) {
       if (!dayEntry.isDirectory) continue;
 
       const dayID = dayEntry.name;
@@ -131,11 +138,9 @@ function loadBlogArticles() {
     dayID: string,
   ) {
     const path = `${blogArticlesPath}/${yearID}/${monthID}/${dayID}/`;
-    for (
-      const articleEntry of Deno.readDirSync(
-        path,
-      )
-    ) {
+    const articleEntries = Deno.readDirSync(path).toArray().reverse();
+
+    for (const articleEntry of articleEntries) {
       if (!articleEntry.isFile) continue;
 
       const articleFileName = articleEntry.name;
