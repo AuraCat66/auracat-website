@@ -195,11 +195,11 @@ a:hover {
   }
   .preview-title {
     * {
-      margin-bottom: 0;
+      margin-bottom: 20px;
     }
   }
   .preview-content {
-    font-size: 0.7em;
+    font-size: 0.75em;
     background-color: inherit;
     border-radius: inherit;
     border-color: inherit;

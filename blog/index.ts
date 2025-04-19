@@ -155,6 +155,9 @@ function loadBlogArticles() {
         );
       }
 
+      // const filePath = join(path, articleEntry.name);
+      // const fileInfo = Deno.lstatSync(filePath);
+
       const blogFileData = Deno.readFileSync(
         `${path}/${articleFileName}`,
       );
